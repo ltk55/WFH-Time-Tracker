@@ -8,25 +8,24 @@ const MonthFilter = () => {
     <div className="m-3 ">
       <div className="row">
         <select
-          className="col-md-4"
-          aria-label="Default select example"
+          className="col-md-3 text-white p-1"
           onChange={(e) => setMonth(e.target.value)}
           value={month}
         >
           <option value="1">January</option>
-          <option value="2">Feb</option>
-          <option value="3">Mar</option>
-          <option value="4">Apr</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
           <option value="5">May</option>
-          <option value="6">Jun</option>
-          <option value="7">Jul</option>
-          <option value="8">Aug</option>
-          <option value="9">Sep</option>
-          <option value="10">Oct</option>
-          <option value="11">Nov</option>
-          <option value="12">Dec</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December </option>
         </select>
-        <div className="col-md-4 offset-md-4">total: </div>
+        <div className="col-md-4 offset-md-4"> </div>
       </div>
     </div>
   );

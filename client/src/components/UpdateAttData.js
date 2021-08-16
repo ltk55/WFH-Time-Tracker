@@ -23,7 +23,7 @@ const UpdateAttData = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
