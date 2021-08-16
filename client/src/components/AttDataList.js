@@ -2,23 +2,27 @@ import React, { useEffect, useContext } from "react";
 import AttDataFinder from "../api/AttDataFinder";
 import { AttDataContext } from "../context/AttDataContext";
 import { useHistory } from "react-router-dom";
-import "../index.css";
 
 const AttDataList = () => {
-  const { attData, setAttData } = useContext(AttDataContext);
+  const { attData, setAttData, month } = useContext(AttDataContext);
   let history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await AttDataFinder.get("/"); // ("/") get the baseURL from AttDataFinder
-        setAttData(response.data.data.attdata);
+
+        const filteredAttData = response.data.data.attdata.filter(
+          (el) => Number(el.att_date.substring(5, 7)) === Number(month)
+        );
+
+        setAttData(filteredAttData);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, []);
+  }, [month, setAttData]);
 
   const handleDelete = async (id) => {
     try {
@@ -37,12 +41,18 @@ const AttDataList = () => {
     history.push(`/attdata/${id}/update`);
   };
 
+  // if (attData.length > 0) {
+  //   filteredAttData = attData.filter(
+  //     (el) => Number(el.att_date.substring(5, 7)) === Number(month)
+  //   );
+  // }
+
   return (
     <div className="flex justify-center">
       <div className="overflow-auto lg:overflow-visible ">
-        <table className="able border-separate space-y-6 text-sm">
-          <thead className="bg-gray-900">
-            <tr className="rounded">
+        <table className="table table-dark table-striped">
+          <thead className="">
+            <tr className="">
               <th className="p-3 text-yellow-400">Date</th>
               <th className="p-3 text-green-200">Start Time</th>
               <th className="p-3 text-blue-400">End Time</th>
@@ -54,46 +64,31 @@ const AttDataList = () => {
             {attData &&
               attData.map((el) => {
                 return (
-                  <tr className="bg-gray-300 text-black" key={el.id}>
-                    <td className="p-3">{el.att_date}</td>
-                    <td className="p-3">{el.start_time}</td>
-                    <td className="p-3">{el.end_time}</td>
+                  <tr className="text-white" key={el.id}>
+                    <td className="p-3">{el.att_date.substring(0, 10)}</td>
+                    <td className="p-3">{el.start_time.substring(0, 5)}</td>
+                    <td className="p-3">{el.end_time.substring(0, 5)}</td>
                     <td className="p-3">{el.lunch_min}</td>
-                    {/* <td className="p-3">
-                        <button
-                          onClick={() => handleUpdate(el.id)}
-                          className="btn btn-warning"
-                        >
-                          Update
-                        </button>
-                      </td>
-                      <td className="p-3">
-                        <button
-                          onClick={() => handleDelete(el.id)}
-                          className="btn btn-warning"
-                        >
-                          Delete
-                        </button>
-                      </td> */}
-                    <td class="p-3">
-                      <button
+                    <td className="p-3">
+                      <i
+                        className="material-icons-round text-base"
                         onClick={() => handleUpdate(el.id)}
-                        class="text-gray-400 hover:text-gray-100 mx-2"
+                        role="button"
                       >
-                        <span class="material-icons-outlined text-green-700">
+                        <span className="material-icons-outlined .text-danger">
                           edit
                         </span>
-                      </button>
-                      <button
+                      </i>
+
+                      <i
+                        className="material-icons-round text-base"
                         onClick={() => handleDelete(el.id)}
-                        class="text-gray-400 hover:text-gray-100 ml-2"
+                        role="button"
                       >
-                        <i class="material-icons-round text-base">
-                          <span class="material-icons-outlined text-red-600">
-                            delete_forever
-                          </span>
-                        </i>
-                      </button>
+                        <span className="material-icons-outlined">
+                          delete_forever
+                        </span>
+                      </i>
                     </td>
                   </tr>
                 );

@@ -4,6 +4,7 @@ export const AttDataContext = createContext();
 
 export const AttDataContextProvider = (props) => {
   const [attData, setAttData] = useState([]);
+  const [month, setMonth] = useState(0);
 
   const addAttData = (val) => {
     setAttData([...attData, val]);
@@ -15,6 +16,8 @@ export const AttDataContextProvider = (props) => {
         attData,
         setAttData,
         addAttData,
+        month,
+        setMonth,
       }}
     >
       {props.children}
