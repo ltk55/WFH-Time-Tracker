@@ -2,18 +2,17 @@ import React, { useContext } from "react";
 import { AttDataContext } from "../context/AttDataContext";
 
 const MonthFilter = () => {
-  const { setMonth } = useContext(AttDataContext);
+  const { month, setMonth } = useContext(AttDataContext);
 
   return (
-    <div>
-      <div className="month">
+    <div className="m-3 ">
+      <div className="row">
         <select
-          className="form-select"
+          className="col-md-4"
           aria-label="Default select example"
           onChange={(e) => setMonth(e.target.value)}
-          defaultValue="08"
+          value={month}
         >
-          <option>Open this select menu</option>
           <option value="1">January</option>
           <option value="2">Feb</option>
           <option value="3">Mar</option>
@@ -27,6 +26,7 @@ const MonthFilter = () => {
           <option value="11">Nov</option>
           <option value="12">Dec</option>
         </select>
+        <div className="col-md-4 offset-md-4">total: </div>
       </div>
     </div>
   );
