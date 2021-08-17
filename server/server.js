@@ -12,7 +12,9 @@ app.use(express.json());
 //get all attendance data
 app.get("/api/v1/attdata", async (req, res) => {
   try {
-    const results = await db.query("SELECT * FROM attdata");
+    const results = await db.query(
+      "SELECT att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata"
+    );
     res.status(200).json({
       status: "success",
       results: results.rows.length,
@@ -28,9 +30,10 @@ app.get("/api/v1/attdata", async (req, res) => {
 //get a attendance entry
 app.get("/api/v1/attdata/:id", async (req, res) => {
   try {
-    const results = await db.query("SELECT * FROM attdata WHERE id = $1", [
-      req.params.id,
-    ]);
+    const results = await db.query(
+      "SELECT att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata WHERE id = $1",
+      [req.params.id]
+    );
 
     res.status(200).json({
       status: "success",
