@@ -2,13 +2,27 @@ import React, { useContext } from "react";
 import { AttDataContext } from "../context/AttDataContext";
 
 const MonthFilter = () => {
-  const { month, setMonth } = useContext(AttDataContext);
+  const { month, setMonth, attData } = useContext(AttDataContext);
+
+  console.log(attData);
+
+  // let totalWorkHour = attData.reduce(
+  //   (re, el) => re + Math.round(Number(el.total_work_hour), 0)
+  // );
+
+  const totalWorkHour = (attData) => {
+    return (
+      Math.round(
+        attData.reduce((re, el) => re + Number(el.total_work_hour), 0) * 100
+      ) / 100
+    );
+  };
 
   return (
-    <div className="m-3 ">
-      <div className="row">
+    <div className="row pb-3">
+      <div className="col-md-3">
         <select
-          className="col-md-3 text-white p-1"
+          className=" text-white p-1"
           onChange={(e) => setMonth(e.target.value)}
           value={month}
         >
@@ -25,7 +39,11 @@ const MonthFilter = () => {
           <option value="11">November</option>
           <option value="12">December </option>
         </select>
-        <div className="col-md-4 offset-md-4"> </div>
+      </div>
+
+      <div className="col-md-3 offset-md-6 text-white">
+        <span className="px-1"> Monthly Total:</span>
+        <span> {totalWorkHour(attData)}</span>
       </div>
     </div>
   );
