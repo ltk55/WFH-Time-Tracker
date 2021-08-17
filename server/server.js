@@ -13,7 +13,7 @@ app.use(express.json());
 app.get("/api/v1/attdata", async (req, res) => {
   try {
     const results = await db.query(
-      "SELECT att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata"
+      "SELECT id, att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata"
     );
     res.status(200).json({
       status: "success",
@@ -31,7 +31,7 @@ app.get("/api/v1/attdata", async (req, res) => {
 app.get("/api/v1/attdata/:id", async (req, res) => {
   try {
     const results = await db.query(
-      "SELECT att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata WHERE id = $1",
+      "SELECT id, att_date, start_time, end_time, lunch_min, total_work_hour FROM attdata WHERE id = $1",
       [req.params.id]
     );
 
