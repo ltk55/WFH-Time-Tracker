@@ -1,1 +1,1 @@
-CREATE DATABASE WFHTimeTracker;
+CREATE DATABASE WorkTimeTracker;
