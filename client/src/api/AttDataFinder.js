@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:3001/api/v1/attdata",
+  baseURL: "https://work-time-tracker55.herokuapp.com/api/v1/attdata",
 });
