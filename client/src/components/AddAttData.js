@@ -37,7 +37,7 @@ const AddAttData = () => {
             <input
               value={attDate}
               onChange={(e) => setAttDate(e.target.value)}
-              type="text"
+              type="date"
               className="form-control text-center"
               placeholder="YYYYMMDD"
             />
@@ -49,7 +49,7 @@ const AddAttData = () => {
             <input
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              type="text"
+              type="time"
               className="form-control text-center"
               placeholder="HH:MM"
             />
@@ -61,7 +61,7 @@ const AddAttData = () => {
             <input
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
-              type="text"
+              type="time"
               className="form-control text-center"
               placeholder="HH:MM"
             />
@@ -73,7 +73,9 @@ const AddAttData = () => {
             <input
               value={lunchMin}
               onChange={(e) => setLunchMin(e.target.value)}
-              type="text"
+              type="number"
+              min="0"
+              step="1"
               className="form-control text-center"
               placeholder="MM"
             />
