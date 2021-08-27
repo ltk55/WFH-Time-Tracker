@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import AttDataFinder from "../api/AttDataFinder";
 import { AttDataContext } from "../context/AttDataContext";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 const AttDataList = () => {
   const { attData, setAttData, month } = useContext(AttDataContext);
@@ -58,7 +59,7 @@ const AttDataList = () => {
             attData.map((el) => {
               return (
                 <tr className="text-white" key={el.id}>
-                  <td className="p-3">{el.att_date.substring(0, 10)}</td>
+                  <td className="p-3">{moment(el.att_date).format("L")}</td>
                   <td className="p-3">{el.start_time.substring(0, 5)}</td>
                   <td className="p-3">{el.end_time.substring(0, 5)}</td>
                   <td className="p-3">{el.lunch_min}</td>

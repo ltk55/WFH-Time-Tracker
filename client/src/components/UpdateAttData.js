@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import AttDataFinder from "../api/AttDataFinder";
+import moment from "moment";
 
 const UpdateAttData = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const UpdateAttData = () => {
     const fetchData = async () => {
       try {
         const response = await AttDataFinder.get(`/${id}`);
-        setAttDate(response.data.data.attdata.att_date);
+        setAttDate(moment(response.data.data.attdata.att_date).format("L"));
         setStartTime(response.data.data.attdata.start_time);
         setEndTime(response.data.data.attdata.end_time);
         setLunchMin(response.data.data.attdata.lunch_min);
@@ -58,7 +59,7 @@ const UpdateAttData = () => {
             onChange={(e) => setStartTime(e.target.value)}
             id="startTime"
             className="form-control"
-            type="text"
+            type="time"
           />
         </div>
 
@@ -69,7 +70,7 @@ const UpdateAttData = () => {
             onChange={(e) => setEndTime(e.target.value)}
             id="endTIme"
             className="form-control"
-            type="text"
+            type="time"
           />
         </div>
 
@@ -81,6 +82,8 @@ const UpdateAttData = () => {
             id="lunchMin"
             className="form-control"
             type="number"
+            min="0"
+            step="1"
           />
         </div>
 
