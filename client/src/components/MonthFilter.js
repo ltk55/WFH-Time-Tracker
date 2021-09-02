@@ -41,7 +41,7 @@ const MonthFilter = () => {
         </select>
       </div>
 
-      <div className="col-5 text-white">
+      <div className="col-5 text-white text-end">
         <span className="px-1"> Monthly Total:</span>
         <span> {totalWorkHour(attData)}</span>
       </div>

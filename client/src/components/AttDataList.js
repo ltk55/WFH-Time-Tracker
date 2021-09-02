@@ -43,7 +43,7 @@ const AttDataList = () => {
   };
 
   return (
-    <div className="">
+    <div className="table-responsive">
       <table className="table table-dark table-bordered">
         <thead className="">
           <tr className="">
