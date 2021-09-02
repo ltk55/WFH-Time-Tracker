@@ -19,8 +19,8 @@ const MonthFilter = () => {
   };
 
   return (
-    <div className="row pb-3">
-      <div className="col-md-3">
+    <div className="row justify-content-between pb-3">
+      <div className="col-3">
         <select
           className=" text-white p-1"
           onChange={(e) => setMonth(e.target.value)}
@@ -41,7 +41,7 @@ const MonthFilter = () => {
         </select>
       </div>
 
-      <div className="col-md-3 offset-md-6 text-white">
+      <div className="col-5 text-white">
         <span className="px-1"> Monthly Total:</span>
         <span> {totalWorkHour(attData)}</span>
       </div>
