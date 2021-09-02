@@ -1,4 +1,4 @@
-# Fake Online Store
+# Work Time Tracker
 
 ## Screenshot
 
