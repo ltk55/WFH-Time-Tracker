@@ -3,11 +3,11 @@ import RestaurantFinder from "../api/AttDataFinder";
 import { AttDataContext } from "../context/AttDataContext";
 
 const AddAttData = () => {
-  const { addAttData } = useContext(AttDataContext);
+  const { addAttData, attData } = useContext(AttDataContext);
   const [attDate, setAttDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [lunchMin, setLunchMin] = useState("");
+  const [lunchMin, setLunchMin] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +26,32 @@ const AddAttData = () => {
     }
   };
 
+  const handleAttDate = (date) => {
+    if (
+      attData.filter((e) => e.att_date.substring(0, 10) === date).length > 0
+    ) {
+      alert("Same date exists!");
+      return;
+    }
+    setAttDate(date);
+  };
+
+  const handleStartTime = (time) => {
+    if (time > endTime && endTime !== "") {
+      alert("Start Time must be less than End Time");
+      return;
+    }
+    setStartTime(time);
+  };
+
+  const handleEndTime = (time) => {
+    if (time < startTime && startTime !== "") {
+      alert("End Time must be greater than Start Time");
+      return;
+    }
+    setEndTime(time);
+  };
+
   return (
     <form action="" className="">
       <div className="row mb-5">
@@ -35,7 +61,7 @@ const AddAttData = () => {
           </label>
           <input
             value={attDate}
-            onChange={(e) => setAttDate(e.target.value)}
+            onChange={(e) => handleAttDate(e.target.value)}
             type="date"
             className="form-control text-center"
             placeholder="YYYYMMDD"
@@ -47,7 +73,7 @@ const AddAttData = () => {
           </label>
           <input
             value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
+            onChange={(e) => handleStartTime(e.target.value)}
             type="time"
             className="form-control text-center"
             placeholder="HH:MM"
@@ -59,7 +85,7 @@ const AddAttData = () => {
           </label>
           <input
             value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
+            onChange={(e) => handleEndTime(e.target.value)}
             type="time"
             className="form-control text-center"
             placeholder="HH:MM"
