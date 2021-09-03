@@ -17,7 +17,11 @@ const AttDataList = () => {
           (el) => Number(el.att_date.substring(5, 7)) === Number(month)
         );
 
-        setAttData(filteredAttData);
+        const sortedResult = filteredAttData.sort((a, b) => {
+          return new Date(b.att_date) - new Date(a.att_date);
+        });
+
+        setAttData(sortedResult);
       } catch (err) {
         console.log(err);
       }
