@@ -40,9 +40,11 @@ const UpdateAttData = () => {
 
   return (
     <div>
-      <form action="">
-        <div className="form-group">
-          <label htmlFor="attDate">Date</label>
+      <form action="" className="d-flex flex-column">
+        <div className="mt-3">
+          <label htmlFor="attDate" className="text-white">
+            Date
+          </label>
           <input
             value={attDate}
             onChange={(e) => setAttDate(e.target.value)}
@@ -52,8 +54,10 @@ const UpdateAttData = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="startTime">Start Time</label>
+        <div className="mt-3">
+          <label htmlFor="startTime" className="text-white">
+            Start Time
+          </label>
           <input
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
@@ -63,8 +67,10 @@ const UpdateAttData = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="endTime">End Time</label>
+        <div className="mt-3">
+          <label htmlFor="endTime" className="text-white">
+            End Time
+          </label>
           <input
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
@@ -74,8 +80,10 @@ const UpdateAttData = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="lunchMin">Lunch Minute</label>
+        <div className="mt-3">
+          <label htmlFor="lunchMin" className="text-white">
+            Lunch Minute
+          </label>
           <input
             value={lunchMin}
             onChange={(e) => setLunchMin(e.target.value)}
@@ -90,9 +98,16 @@ const UpdateAttData = () => {
         <button
           type="submit"
           onClick={handleSubmit}
-          className="btn btn-primary"
+          className="btn btn-primary mt-4"
         >
           Submit
+        </button>
+        <button
+          type="button"
+          onClick={() => history.push("/")}
+          className="btn btn-warning mt-3"
+        >
+          Cancel
         </button>
       </form>
     </div>
