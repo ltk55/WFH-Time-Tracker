@@ -3,6 +3,7 @@ import AttDataFinder from "../api/AttDataFinder";
 import { AttDataContext } from "../context/AttDataContext";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const AttDataList = () => {
   const { attData, setAttData, month } = useContext(AttDataContext);
@@ -48,7 +49,7 @@ const AttDataList = () => {
 
   return (
     <div className="table-responsive">
-      <table className="table table-dark table-bordered">
+      <table className="table table-dark table-bordered" id="table-to-xls">
         <thead className="">
           <tr className="">
             <th className="p-3">Date</th>
@@ -89,6 +90,14 @@ const AttDataList = () => {
             })}
         </tbody>
       </table>
+      <ReactHTMLTableToExcel
+        id="table-xls-button"
+        sheet={`Monthly Report - ${month}`}
+        table="table-to-xls"
+        filename={`Monthly Report - ${month}`}
+        className="btn btn-outline-light btn-sm float-end"
+        buttonText="Export Report to Excel"
+      />
     </div>
   );
 };
