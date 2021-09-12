@@ -19,8 +19,8 @@ const MonthFilter = () => {
   };
 
   return (
-    <div className="row justify-content-between pb-3">
-      <div className="col-3">
+    <div className="row justify-content-between mb-4">
+      <div className="col-3 mt-auto">
         <select
           className=" text-white p-1"
           onChange={(e) => setMonth(e.target.value)}
@@ -41,9 +41,24 @@ const MonthFilter = () => {
         </select>
       </div>
 
-      <div className="col-5 text-white text-end">
-        <span className="px-1"> Monthly Total:</span>
-        <span> {totalWorkHour(attData)}</span>
+      <div className="col-3">
+        <div className="text-white mb-3">
+          <span className="px-1"> Monthly Total:</span>
+          <span> {totalWorkHour(attData)} / 40 hrs</span>
+        </div>
+
+        <div class="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: (totalWorkHour(attData) / 40) * 100 + "%" }}
+            aria-valuenow="50"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            {(totalWorkHour(attData) / 40) * 100}%
+          </div>
+        </div>
       </div>
     </div>
   );
