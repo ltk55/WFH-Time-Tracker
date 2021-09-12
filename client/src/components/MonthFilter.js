@@ -47,16 +47,18 @@ const MonthFilter = () => {
           <span> {totalWorkHour(attData)} / 40 hrs</span>
         </div>
 
-        <div class="progress">
+        <div className="progress">
           <div
             className="progress-bar"
             role="progressbar"
-            style={{ width: (totalWorkHour(attData) / 40) * 100 + "%" }}
+            style={{
+              width: Math.floor((totalWorkHour(attData) / 40) * 100) + "%",
+            }}
             aria-valuenow="50"
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            {(totalWorkHour(attData) / 40) * 100}%
+            {Math.floor((totalWorkHour(attData) / 40) * 100)}%
           </div>
         </div>
       </div>
