@@ -3,8 +3,7 @@ import UpdateAttData from "../components/UpdateAttData";
 
 const UpdatePage = () => {
   return (
-    <div>
-      <h1 className="text-center"> Update Attendance Data</h1>
+    <div className="pt-5">
       <UpdateAttData />
     </div>
   );

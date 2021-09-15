@@ -2,13 +2,7 @@ import React, { useContext } from "react";
 import { AttDataContext } from "../context/AttDataContext";
 
 const MonthFilter = () => {
-  const { month, setMonth, attData } = useContext(AttDataContext);
-
-  console.log(attData);
-
-  // let totalWorkHour = attData.reduce(
-  //   (re, el) => re + Math.round(Number(el.total_work_hour), 0)
-  // );
+  const { month, setMonth, attData, mthlyWkHr } = useContext(AttDataContext);
 
   const totalWorkHour = (attData) => {
     return (
@@ -17,6 +11,8 @@ const MonthFilter = () => {
       ) / 100
     );
   };
+
+  const pctCompleted = Math.floor((totalWorkHour(attData) / mthlyWkHr) * 100);
 
   return (
     <div className="row justify-content-between mb-4">
@@ -44,7 +40,10 @@ const MonthFilter = () => {
       <div className="col-3">
         <div className="text-white mb-3">
           <span className="px-1"> Monthly Total:</span>
-          <span> {totalWorkHour(attData)} / 40 hrs</span>
+          <span>
+            {" "}
+            {totalWorkHour(attData)} / {mthlyWkHr} hrs
+          </span>
         </div>
 
         <div className="progress">
@@ -52,13 +51,13 @@ const MonthFilter = () => {
             className="progress-bar"
             role="progressbar"
             style={{
-              width: Math.floor((totalWorkHour(attData) / 40) * 100) + "%",
+              width: pctCompleted + "%",
             }}
             aria-valuenow="50"
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            {Math.floor((totalWorkHour(attData) / 40) * 100)}%
+            {pctCompleted}%
           </div>
         </div>
       </div>
