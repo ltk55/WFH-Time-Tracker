@@ -31,6 +31,13 @@ const MonthFilter = () => {
         >
           Save
         </button>
+        <button
+          type="button"
+          onClick={() => history.push("/")}
+          className="btn btn-warning mt-3"
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
