@@ -6,7 +6,7 @@ import moment from "moment";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const AttDataList = () => {
-  const { attData, setAttData, month } = useContext(AttDataContext);
+  const { attData, setAttData, month, year } = useContext(AttDataContext);
   let history = useHistory();
 
   useEffect(() => {
@@ -15,7 +15,9 @@ const AttDataList = () => {
         const response = await AttDataFinder.get("/"); // ("/") get the baseURL from AttDataFinder
 
         const filteredAttData = response.data.data.attdata.filter(
-          (el) => Number(el.att_date.substring(5, 7)) === Number(month)
+          (el) =>
+            Number(el.att_date.substring(5, 7)) === Number(month) &&
+            Number(el.att_date.substring(0, 4)) === Number(year)
         );
 
         const sortedResult = filteredAttData.sort((a, b) => {

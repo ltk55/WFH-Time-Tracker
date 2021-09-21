@@ -4,9 +4,11 @@ export const AttDataContext = createContext();
 
 export const AttDataContextProvider = (props) => {
   const getCurrMonth = new Date().getMonth() + 1;
+  const getCurrYear = new Date().getFullYear();
 
   const [attData, setAttData] = useState([]);
   const [month, setMonth] = useState(getCurrMonth);
+  const [year, setYear] = useState(getCurrYear);
   const [mthlyWkHr, setMthlyWkHr] = useState("160");
 
   const addAttData = (val) => {
@@ -23,6 +25,8 @@ export const AttDataContextProvider = (props) => {
         setMonth,
         mthlyWkHr,
         setMthlyWkHr,
+        year,
+        setYear,
       }}
     >
       {props.children}
