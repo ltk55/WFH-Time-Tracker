@@ -21,6 +21,12 @@ const AddAttData = () => {
       });
 
       addAttData(response.data.data.attdata);
+
+      //Remove submitted values
+      setAttDate("");
+      setStartTime("");
+      setEndTime("");
+      setLunchMin(0);
     } catch (err) {
       console.log(err);
     }
