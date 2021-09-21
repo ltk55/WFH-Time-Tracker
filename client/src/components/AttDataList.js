@@ -47,49 +47,56 @@ const AttDataList = () => {
     history.push(`/attdata/${id}/update`);
   };
 
+  console.log(attData);
+
   return (
     <div className="table-responsive">
-      <table className="table table-dark table-bordered" id="table-to-xls">
-        <thead className="">
-          <tr className="">
-            <th className="p-3">Date</th>
-            <th className="p-3">Start Time</th>
-            <th className="p-3">End Time</th>
-            <th className="p-3">Lunch Duration (Min)</th>
-            <th className="p-3">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {attData &&
-            attData.map((el) => {
-              return (
-                <tr className="text-white" key={el.id}>
-                  <td className="p-3">{moment(el.att_date).format("L")}</td>
-                  <td className="p-3">{el.start_time.substring(0, 5)}</td>
-                  <td className="p-3">{el.end_time.substring(0, 5)}</td>
-                  <td className="p-3">{el.lunch_min}</td>
-                  <td className="p-3">
-                    <span
-                      onClick={() => handleUpdate(el.id)}
-                      role="button"
-                      className="material-icons px-1"
-                    >
-                      edit
-                    </span>
+      {attData.length === 0 ? (
+        <p className="text-white text-center p-3">No Data</p>
+      ) : (
+        <table className="table table-dark table-bordered" id="table-to-xls">
+          <thead className="">
+            <tr className="">
+              <th className="p-3">Date</th>
+              <th className="p-3">Start Time</th>
+              <th className="p-3">End Time</th>
+              <th className="p-3">Lunch Duration (Min)</th>
+              <th className="p-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {attData &&
+              attData.map((el) => {
+                return (
+                  <tr className="text-white" key={el.id}>
+                    <td className="p-3">{moment(el.att_date).format("L")}</td>
+                    <td className="p-3">{el.start_time.substring(0, 5)}</td>
+                    <td className="p-3">{el.end_time.substring(0, 5)}</td>
+                    <td className="p-3">{el.lunch_min}</td>
+                    <td className="p-3">
+                      <span
+                        onClick={() => handleUpdate(el.id)}
+                        role="button"
+                        className="material-icons px-1"
+                      >
+                        edit
+                      </span>
 
-                    <span
-                      onClick={() => handleDelete(el.id)}
-                      role="button"
-                      className="material-icons px-1"
-                    >
-                      delete
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+                      <span
+                        onClick={() => handleDelete(el.id)}
+                        role="button"
+                        className="material-icons px-1"
+                      >
+                        delete
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      )}
+
       <ReactHTMLTableToExcel
         id="table-xls-button"
         sheet={`Monthly Report - ${month}`}
