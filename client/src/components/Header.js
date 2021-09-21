@@ -10,6 +10,7 @@ const Header = () => {
         className="header-logo col-11 px-4"
         onClick={() => history.push("/")}
         role="button"
+        data-testid="header-logo"
       >
         <span>⏲</span> Work Time Tracker
       </h2>
@@ -17,6 +18,7 @@ const Header = () => {
         onClick={() => history.push("/setting")}
         role="button"
         className="material-icons px-1 text-white col-1 m-auto text-end px-4"
+        data-testid="setting-logo"
       >
         settings
       </span>
