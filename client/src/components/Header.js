@@ -12,7 +12,7 @@ const Header = () => {
         role="button"
         data-testid="header-logo"
       >
-        <span>⏲</span> Work Time Tracker
+        <span>🕑</span> Work Time Tracker
       </h2>
       <span
         onClick={() => history.push("/setting")}
