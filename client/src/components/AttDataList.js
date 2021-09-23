@@ -30,7 +30,7 @@ const AttDataList = () => {
       }
     };
     fetchData();
-  }, [month, setAttData]);
+  }, [month, setAttData, year]);
 
   const handleDelete = async (id) => {
     try {
@@ -71,7 +71,9 @@ const AttDataList = () => {
               attData.map((el) => {
                 return (
                   <tr className="text-white" key={el.id}>
-                    <td className="p-3">{moment(el.att_date).format("L")}</td>
+                    <td className="p-3">
+                      {moment(el.att_date).format("DD/MM/YYYY")}
+                    </td>
                     <td className="p-3">{el.start_time.substring(0, 5)}</td>
                     <td className="p-3">{el.end_time.substring(0, 5)}</td>
                     <td className="p-3">{el.lunch_min}</td>
