@@ -53,7 +53,8 @@ const MonthFilter = () => {
             style={{
               width: pctCompleted + "%",
             }}
-            aria-valuenow="50"
+            aria-label="monthly progress"
+            aria-valuenow={pctCompleted}
             aria-valuemin="0"
             aria-valuemax="100"
           >
