@@ -4,7 +4,7 @@ import Header from "../components/Header";
 
 const UpdatePage = () => {
   return (
-    <div className="pt-5">
+    <div className="pt-5" data-testid="update">
       <Header />
       <UpdateAttData />
     </div>

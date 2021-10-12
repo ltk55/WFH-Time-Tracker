@@ -7,7 +7,7 @@ const Setting = () => {
   let history = useHistory();
 
   return (
-    <div>
+    <div data-testid="setting">
       <form action="" className="d-flex flex-column">
         <div className="mt-3">
           <label htmlFor="mthlyWkHr" className="text-white mb-1">

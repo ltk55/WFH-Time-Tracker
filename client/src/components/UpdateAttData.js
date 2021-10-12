@@ -39,7 +39,7 @@ const UpdateAttData = () => {
   };
 
   return (
-    <div>
+    <div data-testid="update-att-data">
       <form action="" className="d-flex flex-column">
         <div className="mt-3">
           <label htmlFor="attDate" className="text-white">

@@ -1,6 +1,8 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Header from "../Header";
+import React from "react";
+import "@testing-library/jest-dom";
 
 let getByTestId;
 
@@ -19,11 +21,4 @@ describe("component render", () => {
     const el = getByTestId("header-logo");
     expect(el).toBeInTheDocument();
   });
-
-  // it("header link", async () => {
-  //   const el = screen.getByTestId("header-logo");
-
-  //   fireEvent.click(el);
-  //   expect(el).toBeInTheDocument();
-  // });
 });
