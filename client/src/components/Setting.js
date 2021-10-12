@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AttDataContext } from "../context/AttDataContext";
 import { useHistory } from "react-router-dom";
 
-const MonthFilter = () => {
+const Setting = () => {
   const { mthlyWkHr, setMthlyWkHr, year, setYear } = useContext(AttDataContext);
   let history = useHistory();
 
@@ -58,4 +58,4 @@ const MonthFilter = () => {
   );
 };
 
-export default MonthFilter;
+export default Setting;
